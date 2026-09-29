@@ -28,6 +28,12 @@
 - **Post-Mortem & Retrospective Protocol:** At the end of every major phase, perform a "Retrospective" to identify wins, failures, and necessary changes to these standards. Update this document accordingly to ensure it is a living system.
 - **Data-Driven Decisions:** If user-facing, implement lightweight logging to track usage patterns. New features must be prioritized based on real usage data/feedback, not assumptions.
 
-## 7. Collaboration
+
+## 7. Task Complexity Matrix (Operational Agility)
+To balance speed and structure, tasks are categorized into two levels:
+- **Level 1 (Micro-Fix / Script):** Small bug fixes, standalone scripts, or minor updates. Managed via a local `TODO.md` file (Fast, lightweight).
+- **Level 2 (Feature / Epic):** New UI features, database migrations, architecture refactoring. Managed strictly via **GitHub Issues + Feature Branches + Pull Requests**.
+
+## 8. Collaboration
 - **Async Communication:** Report status as `[Status Report]` in batches.
 - **Error Transparency:** Report the root cause and the fix applied in the status report.
