@@ -8,23 +8,26 @@
 
 ## 2. Quality Gates (QA) & Security
 - **QA Pipeline:** All code must pass `qa_check.sh` (Ruff, Bandit, Vulture, Pytest).
-- **UX Acceptance Criteria:** UI must support real-world usage patterns: Filtering, Search, Analytics, and Dark Mode. No "basic/dummy" UI is acceptable.
+- **UX Acceptance Criteria:** UI must support real-world usage patterns: Filtering, Search, Analytics, and Dark Mode.
 - **Security & Secrets Guard:** Zero hardcoded secrets allowed. Automated checks ensure no API keys or credentials are committed.
 
 ## 3. Dependency & Vulnerability Management
-- **Dependency Auditing:** Run `pip-audit` or `safety check` as part of CI to detect known CVEs in dependencies.
-- **Dependency Locking:** Pin all dependencies in requirements.txt.lock to prevent breaking changes and ensure reproducible builds.
+- **Dependency Auditing:** Run `pip-audit` or `safety check` as part of CI to detect known CVEs.
+- **Dependency Locking:** Pin all dependencies to ensure reproducible builds.
 
 ## 4. Operational Discipline & Deployment
-- **Atomic Writes:** Use `read_file` then `write_file` (Full Overwrite). Avoid `patch` for complex files.
+- **Atomic Writes:** Use `read_file` then `write_file` (Full Overwrite).
 - **Audit Trail:** Maintain `CHANGELOG.md` and `HEALTH.md` for every batch delivery.
 - **Rapid Rollback Strategy:** Features are merged via PRs only after passing all gates. In case of failure, immediate rollback (`git revert`) is enforced.
-- **Impact vs Effort:** Prioritize high-impact user features over aesthetic-only additions.
 
 ## 5. Architecture & API Governance
-- **Living API Contract:** Any backend change must update `API-CONTRACT.md` or auto-generate docs (Swagger/OpenAPI) to keep Frontend/Backend in-sync.
-- **Contract-First Design:** Backend endpoints are documented before implementation; Frontend waits for the agreed contract.
+- **Living API Contract:** Any backend change must update `API-CONTRACT.md` to keep Frontend/Backend in-sync.
+- **Contract-First Design:** API endpoints documented before implementation.
 
-## 6. Collaboration
-- **Async Communication:** Report status as `[Status Report]` in batches. No mid-task waiting unless critical.
+## 6. Continuous Improvement & Data-Driven Growth
+- **Post-Mortem & Retrospective Protocol:** At the end of every major phase, perform a "Retrospective" to identify wins, failures, and necessary changes to these standards. Update this document accordingly to ensure it is a living system.
+- **Data-Driven Decisions:** If user-facing, implement lightweight logging to track usage patterns. New features must be prioritized based on real usage data/feedback, not assumptions.
+
+## 7. Collaboration
+- **Async Communication:** Report status as `[Status Report]` in batches.
 - **Error Transparency:** Report the root cause and the fix applied in the status report.
